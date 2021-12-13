@@ -1,3 +1,6 @@
+@extends('layouts.app')
+@section('content')
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -6,7 +9,7 @@
         <!DOCTYPE html>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Proyect</title>
+        <title>Laravel</title>
 
         <!-- Fonts -->
 
@@ -16,92 +19,61 @@
 
         
     </head>
-    <body style="height:680px; background: -webkit-radial-gradient(LightSalmon,LightCoral,DeepPink);">
-        
+    <body style="height:680px; background: -webkit-radial-gradient(pink,violet);">
 
-        @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-4 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline"></a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline h4">Acceso</a>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card" style="background-color: HotPink">
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline h4">Registrate</a>
-                        @endif
-                    @endauth
-              
-            @endif
+            <div class="card-header text-center text-uppercase font-italic text-primary h1 " style="background: -webkit-radial-gradient(Pink,Fuchsia);">¡¡Productos a la venta!!</div>
 
-          
-                
 
-                        
+                <a href="{{ url('home/') }}" class="btn btn-warning
+                        btn-lg btn-block" role="button" aria-pressed="true">Inicio</a>
 
-            <header class="container-fluid">
-    <div class="row">
-      <div class="col-12 align-align-self-center text-center text-uppercase">
-        <h1>Venta de ropa para niña</h1>
-        <p class="font-weight-bold">"La calidad te hace especial"</p>
-        <img src="{{asset('img/43.jpeg')}}" class="mx-auto d-block" width="1100px" height="560" alt="">
-      </div>
-    </div>
-  </header>
- 
-  <seaction class="container-fluid">
-    <div class="row">
-      <div class="col-12 text-center mt-5 font-weight-bold">
-        <h2>Otoño Invierno</h2>
-        <hr>
 
-      </div>
-    </div>
-  </seaction>
-  <main class="seccion-contenedor">
-    <div class="contenedor-anuncios">
-      <div class="container">
-        <div class="card-group">
-          <div class="card">
-            <img src="{{asset('img/seis.jpg')}}" width="368px" height="280" alt="">
-            <div class="card-body " style="background-color: 	HotPink;">
-              <h5>
-                <p class="text-center font-weight-bold">Tendencias de temporada</p>
-              </h5>
-              <p class="card-text text-justify font-italic ">Compara las opiniones más útiles de los clientes sobre los productos con mejor calificación en nuestra
-                Licuadoras, Batidoras y procesadores de Alimentos tienda.</p>
+                <a href="{{ url('cart/') }}" class="btn btn-success 
+                        btn-lg btn-block" role="button" aria-pressed="true">Carrito de compra</a>
 
+                <div class="card-body" style="background-color: HotPink">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                {{-- Agregar productos --}}
+                    <div class="row">
+                        @foreach($products as $product)
+                        <div class="col-6">
+
+                            <img src="{{ $product->photo }}" width="300" height="300">
+                            <h4>{{ $product->name }}</h4>
+                            <p>{{ Str::limit(strtolower($product->description), 50) }}</p>
+                            <p><strong>Precio: </strong> {{ $product->price }}$</p>
+                      
+                            
+                        <a href="{{ url('add-to-cart/'.$product->id) }}" class="btn btn-success btn-lg
+                        btn-block" role="button" aria-pressed="true">Agregar al carrito</a>
+
+                        <a href="{{ url('product-detail/'.$product->id) }}" class="btn btn-warning 
+                        btn-lg btn-block" role="button" aria-pressed="true">Detalle</a>
+                    </div>
+                        @endforeach
+                    </div>
+
+                    {{-- Agregar productos --}}
+
+                </div>
             </div>
-          </div>
-          <div class="card bg-warning">
-            <img src="{{asset('img/cinco.jpg')}}" width="368px" height="280" alt="">
-            <div class="card-body" style="background-color: LightPink;">
-              <h5>
-                <p class="text-center font-weight-bold">Otoño </p>
-              </h5>
-              <p class="card-text text-justify font-italic">Encuentra Vaporeras Electricas en MercadoLibre.com.mx! Entre y conozca nuestras increíbles ofertas
-                y promociones. Descubre la mejor forma de comprar online.</p>
-
-            </div>
-          </div>
-          <div class="card bg-warning">
-            <img src="{{asset('img/cuatro.jpg')}}" width="368px" height="280" alt="">
-            <div class="card-body" style="background-color: 	HotPink;">
-              <h5>
-                <p class="text-center font-weight-bold">Invierno </p>
-              </h5>
-              <p class="card-text text-justify font-italic">Descubre toda la variedad en hornos eléctricos que tenemos en línea. Compra los mejores
-                electrodomésticos y haz tus tareas más simples.</p>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-    
-        <br>
-    </seaction>
-    <div class="container my-5">
+</div>
+
+<div class="container my-5">
       <!-- Footer -->
-      <footer class="text-center text-lg-start text-white" style="background-color: HotPink">
+      <footer class="text-center text-lg-start text-white" style="background-color: Purple">
         <!-- container -->
         <div class="container p-4 pb-0">
           <!-- Section: Links -->
@@ -194,3 +166,9 @@
 </body>
 
 </html>
+</body>
+</html>
+@endsection
+
+
+

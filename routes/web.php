@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +21,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/products', [ProductsController::class, 'products'])->name('products');
+Route::get('product-detail/{id}', [ProductsController::class, 'detail']);
+Route::get('cart', [ProductsController::class, 'cart']);
+Route::get('add-to-cart/{id}', [ProductsController::class, 'addToCart']);

@@ -1,3 +1,7 @@
+@extends('layouts.app')
+@section('content')
+
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -6,7 +10,7 @@
         <!DOCTYPE html>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Proyect</title>
+        <title>Laravel</title>
 
         <!-- Fonts -->
 
@@ -16,92 +20,82 @@
 
         
     </head>
-    <body style="height:680px; background: -webkit-radial-gradient(LightSalmon,LightCoral,DeepPink);">
-        
+    <body style="height:680px; background: -webkit-radial-gradient(pink,violet);">
 
-        @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-4 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline"></a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline h4">Acceso</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline h4">Registrate</a>
-                        @endif
-                    @endauth
-              
-            @endif
-
-          
-                
-
-                        
-
-            <header class="container-fluid">
-    <div class="row">
-      <div class="col-12 align-align-self-center text-center text-uppercase">
-        <h1>Venta de ropa para niña</h1>
-        <p class="font-weight-bold">"La calidad te hace especial"</p>
-        <img src="{{asset('img/43.jpeg')}}" class="mx-auto d-block" width="1100px" height="560" alt="">
-      </div>
+    <div class="container">
+    <div class="col">
+        <div class="row">
+            </div>
     </div>
-  </header>
- 
-  <seaction class="container-fluid">
-    <div class="row">
-      <div class="col-12 text-center mt-5 font-weight-bold">
-        <h2>Otoño Invierno</h2>
-        <hr>
-
-      </div>
-    </div>
-  </seaction>
-  <main class="seccion-contenedor">
-    <div class="contenedor-anuncios">
-      <div class="container">
-        <div class="card-group">
-          <div class="card">
-            <img src="{{asset('img/seis.jpg')}}" width="368px" height="280" alt="">
-            <div class="card-body " style="background-color: 	HotPink;">
-              <h5>
-                <p class="text-center font-weight-bold">Tendencias de temporada</p>
-              </h5>
-              <p class="card-text text-justify font-italic ">Compara las opiniones más útiles de los clientes sobre los productos con mejor calificación en nuestra
-                Licuadoras, Batidoras y procesadores de Alimentos tienda.</p>
-
-            </div>
-          </div>
-          <div class="card bg-warning">
-            <img src="{{asset('img/cinco.jpg')}}" width="368px" height="280" alt="">
-            <div class="card-body" style="background-color: LightPink;">
-              <h5>
-                <p class="text-center font-weight-bold">Otoño </p>
-              </h5>
-              <p class="card-text text-justify font-italic">Encuentra Vaporeras Electricas en MercadoLibre.com.mx! Entre y conozca nuestras increíbles ofertas
-                y promociones. Descubre la mejor forma de comprar online.</p>
-
-            </div>
-          </div>
-          <div class="card bg-warning">
-            <img src="{{asset('img/cuatro.jpg')}}" width="368px" height="280" alt="">
-            <div class="card-body" style="background-color: 	HotPink;">
-              <h5>
-                <p class="text-center font-weight-bold">Invierno </p>
-              </h5>
-              <p class="card-text text-justify font-italic">Descubre toda la variedad en hornos eléctricos que tenemos en línea. Compra los mejores
-                electrodomésticos y haz tus tareas más simples.</p>
-            </div>
-          </div>
+    <div class="row mt-4">
+        <div class="col-sm-6">
+            <p>
+            <pre><h3 class="text-white text-center">Tú nos importas</h3></pre>
+            </p>
+            <p class="text-white text-justify">Jacinto fue una ciudad ubicada en la parte superior de la Meseta de
+                Jacinto. Fue la base de la CGO y la ciudad más importante después del día de la emergencia. La ciudad
+                fue considerada como una de las ciudades más bellas de Sera y fue la capital de la Operación: Tormenta
+                en la Hondonada pero fue hundida por la CGO para hundir Nexus, la capital de la Horda Locust.</p>
+            <img src="{{asset('img/50.jpg')}}" alt="" class="rounded mx-auto d-block" height="350xp" width="500xp">
         </div>
-      </div>
+        <div class="col-sm-6">
+            <p>
+            <pre><h3 class="text-white text-center">Descrubre las ventas</h3></pre>
+            </p>
+            <p class="text-white text-justify">La Cárcel de Máxima Seguridad de Jacinto, conocida por el nombre de
+                Establecimiento de servicios de prisión Hesketh o por su apodo "The Slab" es una prisión de Ephyra, la
+                cual albergaba a los peores criminales, durante el periodo de las Guerras del Péndulo. El Sargento
+                Marcus Fenix estuvo encerrado durante 4 años.</p>
+            <img src="{{asset('img/51.jpg')}}" alt="" class="rounded mx-auto d-block" height="350xp" width="500xp">
+        </div>
     </div>
-    
-        <br>
-    </seaction>
-    <div class="container my-5">
+</div>
+    </div>
+    </div><br><br>
+
+
+
+<div class="container-lg">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card card-body text-center" style="background: -webkit-radial-gradient(Pink,Fuchsia);">
+                
+                <div class="card-header text-center text-uppercase font-italic  h1 " style="background: -webkit-radial-gradient(Pink,Fuchsia);">Detalle de la compra</div>
+
+
+                <a href="{{ url('products/') }}"  class="btn btn-warning   
+                        btn-lg btn-block" role="button" aria-pressed="true">Productos</a>
+                        
+                        <div class="col-12">
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+        {{-- Detalle productos --}}
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="{{ $product->photo }}" width="300" height="300">
+                            <h4>{{ $product->name }}</h4>
+                            <p>{{ Str::limit(strtolower($product->description), 50) }}</p>
+                            <p><strong>Precio: </strong> {{ $product->price }}$</p>
+                    </div>
+                </div>
+                    {{-- Detalle productos --}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container my-5">
       <!-- Footer -->
-      <footer class="text-center text-lg-start text-white" style="background-color: HotPink">
+      <footer class="text-center text-lg-start text-white" style="background-color:purple">
         <!-- container -->
         <div class="container p-4 pb-0">
           <!-- Section: Links -->
@@ -192,5 +186,5 @@
     <!-- End of .container -->
 
 </body>
-
 </html>
+@endsection
